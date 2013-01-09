@@ -2,7 +2,7 @@
 
 Encapsular, como su nombre lo sugiere, implica la acción de poner juntas ciertas cosas dado que hay una razón para ello. En la POO aquellas cosas serán los datos y los métodos que operan sobre esos datos. *Mediante el encapsulamiento es que creamos las entidades que deseamos manejar en nuestros sistemas*.  
 Como puede leerse en una de las fuentes: 
-> "Preguntar '¿qué es el encapsulamiento?' y recibir como respuesta 'Se trata de hacer los atributos y los métodos privados', es generalmente una indicación de que si bien los programadores están empleando clases y objetos, esto no significa que estén utilizando Orientación a Objetos"
+> "Preguntar '¿qué es el encapsulamiento?' y recibir como respuesta 'Se trata de hacer los atributos y los métodos privados', es generalmente una indicación de que si bien los programadores están empleando clases y objetos, esto no significa que estén utilizando Orientación a Objetos".  
 > Shaun Smith
 
 El encapsulamiento tiene dos sentidos: el de especialización, y el de completitud:
@@ -65,24 +65,29 @@ En este caso, la implementación se encuentra protegida mediante la abstracción
 Por último, tenemos ambas cualidades, garantizadas por el método que representa la responsabilidad de los objetos, retornando List (suficientemente genérico) y la posesión  del atributo privado.
 
 #### Reglas
-En el muy recomendable artículo de Wm. Paul Rogers, en JavaWorld, podemos encontrar una serie de reglas para asegurar encapsulamiento y ocultamiento de información.
+En el muy recomendable [artículo de Wm. Paul Rogers, en JavaWorld](http://www.javaworld.com/javaworld/jw-05-2001/jw-0518-encapsulation.html), podemos encontrar una serie de reglas para asegurar encapsulamiento y ocultamiento de información.
 
-> Regla de encapsulamiento número 1:
+> Regla de encapsulamiento número 1:  
 > Ubicar los datos y las operaciones que trabajan sobre esos datos en la misma clase.
 
-> Regla de encapsulamiento número 2:
+
+> Regla de encapsulamiento número 2:  
 > Utilizar diseño guiado por las responsabilidades para determinar la agrupación de datos y operaciones dentro de clases.
 
-> Regla del ocultamiento de información 1:
+
+> Regla del ocultamiento de información 1:  
 > No exponer atributos.
 
-> Regla del ocultamiento de información 2:
+
+> Regla del ocultamiento de información 2:  
 > No exponer diferencia entre atributos propiamente dichos y atributos calculados.
 
-> Regla del ocultamiento de información 3:
+
+> Regla del ocultamiento de información 3:  
 > No exponer la estructura interna de una clase.
 
-> Regla del ocultamiento de información 4:
+
+> Regla del ocultamiento de información 4:  
 > No exponer detalles de implementación de una clase.
 
 ## Getters y Setters
