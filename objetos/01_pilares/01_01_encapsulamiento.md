@@ -67,28 +67,15 @@ Por último, tenemos ambas cualidades, garantizadas por el método que represent
 #### Reglas
 En el muy recomendable [artículo de Wm. Paul Rogers, en JavaWorld](http://www.javaworld.com/javaworld/jw-05-2001/jw-0518-encapsulation.html), podemos encontrar una serie de reglas para asegurar encapsulamiento y ocultamiento de información.
 
-> Regla de encapsulamiento número 1:  
-> Ubicar los datos y las operaciones que trabajan sobre esos datos en la misma clase.
+##### Encapsulamiento
+1. Ubicar los datos y las operaciones que trabajan sobre esos datos en la misma clase.
+2. Utilizar diseño guiado por las responsabilidades para determinar la agrupación de datos y operaciones dentro de clases.
 
-
-> Regla de encapsulamiento número 2:  
-> Utilizar diseño guiado por las responsabilidades para determinar la agrupación de datos y operaciones dentro de clases.
-
-
-> Regla del ocultamiento de información 1:  
-> No exponer atributos.
-
-
-> Regla del ocultamiento de información 2:  
-> No exponer diferencia entre atributos propiamente dichos y atributos calculados.
-
-
-> Regla del ocultamiento de información 3:  
-> No exponer la estructura interna de una clase.
-
-
-> Regla del ocultamiento de información 4:  
-> No exponer detalles de implementación de una clase.
+##### Ocultamiento de información
+1. No exponer atributos.
+2. No exponer diferencia entre atributos propiamente dichos y atributos calculados.
+3. No exponer la estructura interna de una clase.
+4. No exponer detalles de implementación de una clase.
 
 ## Getters y Setters
 Dado que bajo ciertas circunstancias es necesario instruir a un objeto la necesidad de cambiar algún valor interno del mismo, es importante proporcionar un mecanismo para poder hacerlo sin romper el encapsulamiento (en términos rudimentarios, sin hacer públicos algunos -o todos- sus miembros).  
