@@ -55,7 +55,7 @@ Aquí, en cambio, provee los datos para interactuar, impide el acceso externo al
 
 En este caso, la implementación se encuentra protegida mediante la abstracción a la interfaz (List), lo que nos permitirá en un futuro cambiar nuestra colección de un ArrayList a, por ejemplo, una LinkedList
 
-    class EncapsulationAndInformationHiding{
+    class EncapsulationAndInformationHiding {
       private ArrayList widths = new ArrayList();
       public List getWidths(){
         return widths;
