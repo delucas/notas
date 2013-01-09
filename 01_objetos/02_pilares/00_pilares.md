@@ -3,6 +3,6 @@ Muchas veces se suele definir la Programación Orientada a Objetos mediante sus 
 
 La *POO* tiene, entre sus características, tres que son principales y por ello se denominan **pilares**. Se corresponden con conceptos que tienen creciente nivel de dificultad, y al ser respetados y aplicados conllevan a un diseño modular y organizado de las clases que nos ayudarán a resolver los problemas de programación.
 
-### [Encapsulamiento](01_pilares/01_01_encapsulamiento.md)
-### [Herencia](01_pilares/01_02_herencia.md)
-### [Polimorfismo](01_pilares/01_02_pilares.md)
+1. [Encapsulamiento](01_encapsulamiento.md)
+2. [Herencia](02_herencia.md)
+3. [Polimorfismo](03_polimorfismo.md)
