@@ -9,12 +9,12 @@
     * [Mejoras técnicas](#mejoras)
 
 * Unidad 1: Programación Orientada a Objetos
-    * [Capítulo 1: Objetos](01_objetos/01_poo/00_poo.md)
-    * [Capítulo 2: Pilares de la POO](01_objetos/02_pilares/00_pilares.md)
-        * [Encapsulamiento](01_objetos/02_pilares/01_encapsulamiento.md)
-        * [Herencia](01_objetos/02_pilares/02_herencia.md)
-        * [Polimorfismo](01_objetos/02_pilares/03_polimorfismo.md)
-    * [Capítulo 3: Principios SOLID](01_objetos/03_solid/00_solid.md)
+    * [Capítulo 1: Objetos](notas/01_objetos/01_poo/00_poo.md)
+    * [Capítulo 2: Pilares de la POO](notas/01_objetos/02_pilares/00_pilares.md)
+        * [Encapsulamiento](notas/01_objetos/02_pilares/01_encapsulamiento.md)
+        * [Herencia](notas/01_objetos/02_pilares/02_herencia.md)
+        * [Polimorfismo](notas/01_objetos/02_pilares/03_polimorfismo.md)
+    * [Capítulo 3: Principios SOLID](notas/01_objetos/03_solid/00_solid.md)
 
 
 # <a name="notas"/>Notas sobre *'Notas del Taller de Java'*
