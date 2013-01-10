@@ -3,7 +3,7 @@
 Encapsular, como su nombre lo sugiere, implica la acción de poner juntas ciertas cosas dado que hay una razón para ello. En la POO aquellas cosas serán los datos y los métodos que operan sobre esos datos. *Mediante el encapsulamiento es que creamos las entidades que deseamos manejar en nuestros sistemas*.  
 Como puede leerse en una de las fuentes: 
 
-> "Preguntar '¿qué es el encapsulamiento?' y recibir como respuesta 'Se trata de hacer los atributos y los métodos privados', es generalmente una indicación de que si bien los programadores están empleando clases y objetos, esto no significa que estén utilizando Orientación a Objetos".  
+> "Preguntar '¿qué es el encapsulamiento?' y recibir como respuesta 'se trata de hacer los atributos y los métodos privados', es generalmente una indicación de que si bien los programadores están empleando clases y objetos, esto no significa que estén utilizando Orientación a Objetos".  
 > Shaun Smith
 
 El encapsulamiento tiene dos sentidos: el de especialización, y el de completitud:
@@ -33,7 +33,7 @@ Ocultar la información es utilizar las técnicas que nos brinda el lenguaje par
 El encapsulamiento nos habla de límites: esta responsabilidad es mía, la llevaré a cabo con estos datos.  
 El ocultamiento de información nos indica buenas prácticas de programación: necesito de este otro objeto, pero no me importa cómo resuelva sus responsabilidades mientras lo haga por mí.
 
-Un concepto no implica el otro, ni viceversa. Un ejemplo muy simplificado de cada caso podemos verlo en una de las fuentes, que nos tomamos la licencia de transcribir:
+Un concepto no implica el otro, ni viceversa. Un ejemplo muy simplificado de cada caso podemos verlo en [una de las fuentes](http://c2.com/cgi/wiki?EncapsulationIsNotInformationHiding), que nos tomamos la licencia de transcribir:
 
     class NoEncapsulationOrInformationHiding { 
       public ArrayList widths = new ArrayList();
@@ -63,7 +63,8 @@ En este caso, la implementación se encuentra protegida mediante la abstracción
       }
     }
 
-Por último, tenemos ambas cualidades, garantizadas por el método que representa la responsabilidad de los objetos, retornando List (suficientemente genérico) y la posesión  del atributo privado.
+Por último, tenemos ambas cualidades, garantizadas por el método que representa la responsabilidad de los objetos, retornando List (suficientemente genérico) y la posesión  del atributo privado.  
+**Nota:** ¡Cuidado! El manejo de referencias tiene como consecuencia que al retornar la lista original, aquél que la utilice pueda cambiar su contenido. Hay alternativas a esto, como ser el retornar una copia inmutable, no exponer la lista u otorgar un iterador propio en lugar de permitir el acceso al atributo (pero a los efectos de ejemplificar, bien vale el código proporcionado)
 
 #### Reglas
 En el muy recomendable [artículo de Wm. Paul Rogers, en JavaWorld](http://www.javaworld.com/javaworld/jw-05-2001/jw-0518-encapsulation.html), podemos encontrar una serie de reglas para asegurar encapsulamiento y ocultamiento de información.
