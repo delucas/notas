@@ -2,6 +2,7 @@
 
 Encapsular, como su nombre lo sugiere, implica la acción de poner juntas ciertas cosas dado que hay una razón para ello. En la POO aquellas cosas serán los datos y los métodos que operan sobre esos datos. *Mediante el encapsulamiento es que creamos las entidades que deseamos manejar en nuestros sistemas*.  
 Como puede leerse en una de las fuentes: 
+
 > "Preguntar '¿qué es el encapsulamiento?' y recibir como respuesta 'Se trata de hacer los atributos y los métodos privados', es generalmente una indicación de que si bien los programadores están empleando clases y objetos, esto no significa que estén utilizando Orientación a Objetos".  
 > Shaun Smith
 
@@ -93,15 +94,17 @@ Un setter, en cambio, responde a la siguiente estructura:
       this.edad = edad;
     }
 
-Cuando estamos a cargo de la definición de una clase, definimos nosotros mismos el nivel de complejidad que estos métodos encapsulan, y qué tan directamente permitimos que un agente externo acceda a los miembros de la misma.  
+Cuando estamos a cargo de la definición de una clase, definimos nosotros mismos el nivel de complejidad que estos métodos encapsulan, y qué tan directamente permitimos que un agente externo acceda a los miembros de la misma. 
+ 
 > **Nota:** Para utilizar algunas tecnologías Java, es necesario escribir setters y getters de todos los atributos *persistentes* de una clase. Ya llegaremos a eso, pero por el momento es interesante saberlo.
 
 ## Tell, don't ask
+
 > El código procedural obtiene información y luego toma decisiones. El código orientado a objetos instruye a los objetos para hacer cosas. 
 > Alec Sharp [SHARP-97]
 
 En este sentido, deberíamos pedirle cosas a los objetos en lugar de preguntarle al respecto de su estado, tomar una decisión en función a ello, y luego decirles qué hacer.  
-Violaríamos el encapsulamiento al hacerlo de otro modo: si tomásemos decisiones en función del estado de un objeto, estaríamos conociendo *demasiada* información y es muy probable que la decisión que estemos tratando de tomar desde el módulo cliente corresponda al objeto consultado en lugar del módulo que estamos escribendo.
+Violaríamos el encapsulamiento al hacerlo de otro modo: si tomásemos decisiones en función del estado de un objeto, estaríamos conociendo *demasiada* información y es muy probable que la decisión que estemos tratando de tomar desde el módulo cliente corresponda al objeto consultado en lugar del módulo que estamos escribiendo.
 
 Con esto volvemos a los conceptos de **comandos** y **consultas** que conocemos de capítulos anteriores, y la preferencia de los primeros por sobre los segundos.
 
