@@ -467,7 +467,47 @@ Podemos ver los tags de nuestro proyecto con el simple comando:
 > **Nota:** Puede hacerse otro tipo de tags, el cual es equivalente a un commit (por los datos de autoría que lleva aparejados), pero son conceptos que escapan a los intereses de estas notas. Puede profundizarse sobre ellos en la bibliografía, fundamentalmente en el libro **Pro git**, de *Scott Chacon*.
 
 ### Trabajando en equipo
+Una de las mayores ventajas que nos presenta el trabajo con un sistema de control de versiones es la posibilidad de cooperar en equipo, y obtener esa sinergia que no se consigue individualmente. Consideremos que la alternativa podría ser enviarse los fragmentos trabajados por correo electrónico, y mezclarlos a mano (completamente arcáico).
 
+A modo de ejemplo utilizaremos [Github](http://www.github.com) como servidor de git, el cual será nuestro repositorio centralizado para permitirnos cooperar.
+
+> **Nota:** Escapa a este apartado la configuración de una cuenta de Github, pero es requisito para trabajar con ella.
+
+#### Compartiendo nuestro trabajo
+Si quisiéramos subir nuestro trabajo a Github, deberíamos crear un repositorio en la página y obtener la dirección git del mismo. Una vez hecho esto, procederemos a agregarlo como repositorio externo:
+
+lucas@falcon:~/notas/demo-git$ git remote add origin git@github.com:delucas/demo-git.git
+
+Sin respuesta, podemos suponer que no ha habido errores. Estamos en condiciones de subir nuestro trabajo al repositorio remoto que acabamos de configurar:
+
+    lucas@falcon:~/notas/demo-git$ git push -u origin master
+    Counting objects: 30, done.
+    Delta compression using up to 4 threads.
+    Compressing objects: 100% (29/29), done.
+    Writing objects: 100% (30/30), 2.60 KiB, done.
+    Total 30 (delta 16), reused 0 (delta 0)
+    To git@github.com:delucas/demo-git.git
+     * [new branch]      master -> master
+    Branch master set up to track remote branch master from origin.
+
+Para interpretar correctamente el comando ejecutado, podríamos leerlo de la siguiente manera: *"git, empujá en el repo marcado como origin el contenido del branch master"*. Se toma por convención que ambos branches se llaman del mismo modo (tanto remoto como local).
+Esto creará un nuevo branch en forma remota, llamado *master* y que nos servirá para subir nuestro trabajo y coordinarlo con el equipo.
+
+#### Actualizando el repo
+Una vez que estamos trabajando en equipo, y ya sabiendo compartir un proyecto, necesitamos poder bajar los cambios que nuestros compañeros hagan al mismo.
+
+Para ello, y teniendo en cuenta **tener el stash vacío** (por prudencia, aunque con la práctica no es necesario) y **un estado estable del directorio de trabajo** (esto es, commiteando aquello que desamos conservar y descartando aquello que no), haremos lo siguiente:
+
+    lucas@falcon:~/notas/demo-git$ git pull origin master
+    From github.com:delucas/demo-git
+     * branch            master     -> FETCH_HEAD
+    Updating 23a4564..0d1b4a2
+    Fast-forward
+     index.html |    2 +-
+     1 file changed, 1 insertion(+), 1 deletion(-)
+
+En este caso hemos obtenido el contenido del repositorio remoto sin problemas. En caso de presentarse algún conflicto de merge, deberemos resolverlo tal como vimos en el apartado correspondiente (después de todo, estamos mezclando ramas remotas en lugar de locales, pero ramas al fin).  
+Esta vez interpretaremos la línea como *"git, tirá del repo marcado como origin el branch master y colocalo en el branch master local"*. Nuevamente la convención reina sobre los nombres de los repos/ramas.
 
 ## Resumen de comandos
 * `git init`, para inicializar un repositorio nuevo en el directorio actual.
@@ -488,8 +528,13 @@ Podemos ver los tags de nuestro proyecto con el simple comando:
 * `git mergetool`, para mezclar en forma asistida el contenido de archivos conflictuados al hacer un `git merge`. Son aquellos archivos sobre los que no se ha podido hacer una mezcla automática.
 * `git tag nombre_tag sha_del_commit`, para etiquetar cierto commit con un identificador de elección propia. Sirve para marcar versiones, entregas o hitos remarcables en el proyecto.
 * `git tag -l`, para listar todos los tags del proyecto.
+* `git remote add origin direccion_repo_remoto`, para agregar un repositorio remoto al proyecto, llamándolo "origin".
+* `git push -u origin master`, para subir el repositorio local en el repositorio remoto. No debe haber conflictos entre ambos para que la operación se resuelva correctamente. De haberlos, deberá resolverse en forma local.
+* `git pull origin master`, para bajar una copia del repositorio remoto dentro del branch especificado, en este caso 'master', al repositorio local. Puede haber conflictos de merge, que se resolverán del modo indicado anteriormente.
 
 ## Bibliografía
 * **Chacon, Scott.** *Pro git.* Berkeley, CA: Apress, 2009
 * **Chacon, Scott.** [Pro git](http://github.com/progit/progit/tree/master/es). Libro gratuito y en español.
+
+* **Neo.** [Git immersion](http://gitimmersion.com/). Guía para aprender git paso a paso.
 * **Fowler, Martin.** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
