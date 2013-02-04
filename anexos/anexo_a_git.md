@@ -335,7 +335,109 @@ Conocíamos el comando, sólamente que ahora hemos resguardado el trabajo median
 > **Nota:** Hemos trabajado con ramas, creándolas, haciéndolas crecer, integrándolas y eliminándolas. Si bien no es necesario utilizarlas, presenta incontables ventajas, como trabajar en dos funcionalidades divergentes, elegir cuál prospera y cuál no, mantener ordenado el código y otras ventajas que iremos descubriendo con el tiempo. El estándar laboral es utilizarlas, por lo que es preferible tomar gimnasia con esta técnica de trabajo.
 
 ### Mezclando
+Si bien ya estuvimos haciendo una mezcla (al integrar ramas), esta vez veremos dos casos interesantes. El primero involucra una mezcla simple, y el siguiente resolviendo un conflicto.
 
+#### Mezcla sin grumos
+Imaginemos el siguiente escenario:
+
+    lucas@falcon:~/notas/demo-git$ git status
+    # On branch master
+    nothing to commit (working directory clean)
+    lucas@falcon:~/notas/demo-git$ git lol
+    * db37139 (HEAD, master) Algunas palabras en negrita
+    | * a417ce8 (fondoAzul) Se agrega fondo azul al index
+    |/  
+    * 57c5c7b Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Como vemos, hay dos ramas divergentes, pero que no colisionan en sus contenidos (lo veremos luego, pero lo afirmamos a priori). Este es el mejor escenario, ya que simplemente deberemos mezclar los contenidos y no nos ocasionará problemas:
+
+    lucas@falcon:~/notas/demo-git$ git merge fondoAzul 
+    Auto-merging index.html
+    Merge made by the 'recursive' strategy.
+     index.html |    2 +-
+     1 file changed, 1 insertion(+), 1 deletion(-)
+
+Ahora mismo, podemos eliminar el branch, luego de haberse realizado la mezcla automática del contenido de los archivos. Es el caso más simple, y el más común para los proyectos pequeños / medianos.
+
+    lucas@falcon:~/notas/demo-git$ git lol
+    *   23a4564 Merge branch 'fondoAzul'
+    |\  
+    | * a417ce8 Se agrega fondo azul al index
+    * | db37139 Algunas palabras en negrita
+    |/  
+    * 57c5c7b Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+#### Mezcla peligrosa
+En este caso, tenemos un escenario como el siguiente:
+
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 034d45e (HEAD, master) Otro título
+    | * 334de17 (titulo) Cambiamos el título
+    |/  
+    * 57c5c7b Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+En este caso, los cambios colisionan. El merge automático nos proporciona el siguiente feedback:
+
+    lucas@falcon:~/notas/demo-git$ git merge titulo 
+    Auto-merging index.html
+    CONFLICT (content): Merge conflict in index.html
+    Automatic merge failed; fix conflicts and then commit the result.
+
+Con el repositorio en este estado, no podemos continuar trabajando. Debe ser prioridad resolver el conflicto para luego poder dedicarnos al desarrollo.
+
+Simplemente recurrimos al siguiente comando:
+
+    lucas@falcon:~/notas/demo-git$ git mergetool
+    Merging:
+    index.html
+    
+    Normal merge conflict for 'index.html':
+      {local}: modified file
+      {remote}: modified file
+    Hit return to start merge resolution tool (meld): 
+
+Nos auxiliará alguna herramienta de merging (en este caso, meld, pero bien puede ser alguna alternativa). Básicamente todas apuntan a lo mismo: nos presentan el archivo original, el modificado en una de las ramas y el de la otra (tres vistas en total) y nos permiten elegir con qué contenido quedarnos en cada lugar donde se encuentre conflictuado el archivo.
+
+Una vez resuelto el conflicto con la herramienta propuesta, veremos el estado del repo:
+
+    lucas@falcon:~/notas/demo-git$ git status
+    # On branch master
+    # Changes to be committed:
+    #
+    #	modified:   index.html
+    #
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #	index.html.orig
+
+Podemos ver que agregó ciertos archivos, que podemos eliminar con confianza. Adicionalmente, el que fue mezclado aparece como para ser commiteado. Simplemente lo agregamos y commiteamos, con algún comentario como "Se resuelven conflictos" o algún otro significativo.
+
+> **Nota:** Hay otra estrategia para la mezcla, que es el **rebase**. Por ser ligeramente más complicada e involucrar una estrategia que requiere más cuidado, preferimos dejarla a un lado de este apartado.
+
+Una vez terminada la mezcla, el commit, y el borrado del branch que ya no es de utilidad, nos encontramos con el siguiente escenario:
+
+    lucas@falcon:~/notas/demo-git$ git lol
+    *   0d1b4a2 (HEAD, master) Se resuelven conflictos
+    |\  
+    | * 334de17 Cambiamos el título
+    * | 034d45e Otro título
+    |/ 
+    * 57c5c7b Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Con esto hemos concluido nuestro trabajo de mezcla, por lo que podemos continuar con el desarrollo.
 
 ### Etiquetando
 
@@ -359,8 +461,9 @@ Conocíamos el comando, sólamente que ahora hemos resguardado el trabajo median
 * `git branch`, para ver las ramas actuales.
 * `git branch -D nombre_rama`, para eliminar una rama. Es necesario estar posicionado en *otra rama*.
 * `git merge nombre_rama`, para mezclar el contenido de la rama especificada dentro de la rama actual.
+* `git mergetool`, para mezclar en forma asistida el contenido de archivos conflictuados al hacer un `git merge`. Son aquellos archivos sobre los que no se ha podido hacer una mezcla automática.
 
 ## Bibliografía
 * **Chacon, Scott.** *Pro git.* Berkeley, CA: Apress, 2009
 * **Chacon, Scott.** [Pro git](http://github.com/progit/progit/tree/master/es). Libro gratuito y en español.
-* **Fowler, Martin** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
+* **Fowler, Martin.** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
