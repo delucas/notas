@@ -202,9 +202,137 @@ En este momento HEAD, nuestro *puntero de trabajo actual*, nos dice que nos repo
 > **Nota:** la opción `--hard` del comando `git reset` nos indica que quedemos volver atrás el puntero HEAD, descartando los cambios de los archivos definitivamente.  
 Si en su lugar hubiésemos empleado la opción `--soft`, descartaría el último commit pero los cambios se encontrarían presentes en el directorio de trabajo por si deseamos modificarlos o emplear una de ellos en el próximo commit.
 
-
 ### Ramas... ramas... ¡ramas!
+Una forma más correcta de trabajar en un proyecto de mediana envergadura es mediante ramas de desarrollo. Esto quiere decir que existe un flujo estandarizado para desarrollo, digámosle master por el momento, y cada vez que deseamos agregar una funcionalidad generar una divergencia de ese flujo. Una vez terminado el trabajo, volver a integrarlo al flujo principal.  
+Esto presenta muchas ventajas, entre los principales podríamos encontrar:
 
+* La posibilidad de enfocarnos en la rama actual (es decir, en la funcionalidad que estamos desarrollando) sin miedo a ensuciar el flujo principal de desarrollo.
+* En caso de necesitar hacer un arreglo sobre el flujo principal, poder cambiar la rama de desarrollo a otra.
+* La creación de ramas experimentales, en las cuales se hacen pruebas de concepto totalmente descartables, sabiendo que se puede eliminar la rama una vez se descubra que no es frusctífera.
+
+> **Nota:** Existen [teorías completas](http://martinfowler.com/bliki/FeatureBranch.html) sobre cómo desarrollar con ramas, equipos de trabajo y flujos distribuídos. Por supuesto, exceden los objetivos de este apartado. Sin embargo no debemos descartar que en cada organización se escoja un modo similar pero ligeramente diferente.
+
+Para trabajar con branches, debemos *crearlos*, *commitear en ellos*, *integrarlos* una vez terminado el trabajo y *eliminarlos* cuando el código ha sido asegurado (o desea descartarse).
+
+Hagamos una prueba. Creemos el branch "about", donde escribiremos un *acerca-de* en el proyecto. El comando indicado será `git checkout -b about`, que básicamente significa "creemos una rama aquí mismo, llamada *about*".
+
+    lucas@falcon:~/notas/demo-git$ git checkout -b about
+    Switched to a new branch 'about'
+
+Como podemos ver, automáticamente nos ha cambiado al nuevo branch. Por lo tanto, **ya estábamos en uno** (master, como veníamos anticipando). Podemos verificarlo mediante el comando `git branch`:
+
+    lucas@falcon:~/notas/demo-git$ git branch
+    * about
+      master
+
+> **Nota:** Si quisiéramos volver al branch master (a partir de ahora le diremos así, y no "flujo principal", ya que después de todos son simplemente ramas) sólo necesitaríamos hacer un `git checkout master`, pero lo haremos en su momento.
+
+En este punto es que trabajamos dentro del branch. Saltearemos esta parte, pero resumiendo los hechos, creamos un archivo y lo enlazamos al index:
+
+    lucas@falcon:~/notas/demo-git$ git status
+    # On branch about
+    # Changes not staged for commit:
+    #   (use "git add <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	modified:   index.html
+    #
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #	about.html
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+Nos resta agregar los cambios, commitear, y contemplar cómo queda nuestra pequeña rama de desarrollo:
+
+    lucas@falcon:~/notas/demo-git$ git add index.html about.html
+    lucas@falcon:~/notas/demo-git$ git commit -m "Agregamos el about me"
+    [about 57c5c7b] Agregamos el about me
+     2 files changed, 10 insertions(+)
+     create mode 100644 about.html
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 57c5c7b (HEAD, about) Agregamos el about me
+    * 2a799a3 (master) Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Como podemos ver, el branch **about** se encuentra por encima de master. Esto es lógico desde el punto de vista de que esta rama ha crecido desde la otra. Si en este punto volviéramos a master, y trabajásemos sobre ella, veríamos la primera divergencia. En lugar de hacer esto, crearemos otra tama (desde master) para un cambio que no deseamos que prospere, así ejemplificamos todos los casos.
+
+Por empezar, volvamos a la rama **master**:
+
+    lucas@falcon:~/notas/demo-git$ git checkout master
+    Switched to branch 'master'
+
+Ahora, creamos la nueva rama, digamos **discard**:
+
+    lucas@falcon:~/notas/demo-git$ git checkout -b discard
+    Switched to a new branch 'discard'
+
+Trabajando sobre esta rama, podemos obtener un nuevo panorama:
+
+    lucas@falcon:~/notas/demo-git$ vim bepo.html
+    lucas@falcon:~/notas/demo-git$ git add .
+    lucas@falcon:~/notas/demo-git$ git commit -m "Cambio a descartar"
+    [discard 4a2de78] Cambio a descartar
+     1 file changed, 3 insertions(+)
+     create mode 100644 bepo.html
+    
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 4a2de78 (HEAD, discard) Cambio a descartar
+    | * 57c5c7b (about) Agregamos el about me
+    |/  
+    * 2a799a3 (master) Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Se puede ver que ambas ramas nacen desde master, pero divergen en su contenido. Aquella que tiene el indicador "HEAD" es en la que estamos posicionados.
+
+Descartemos esa rama.
+
+    lucas@falcon:~/notas/demo-git$ git checkout about
+    Switched to branch 'about'
+    lucas@falcon:~/notas/demo-git$ git branch -D discard 
+    Deleted branch discard (was 4a2de78).
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 57c5c7b (HEAD, about) Agregamos el about me
+    * 2a799a3 (master) Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Como podemos apreciar es necesario salir de la rama a eliminar para luego hacerlo con el comando `git branch -D nombre_rama`. Finalmente, vemos el estado del repo (sin la rama *discard*).
+
+Integremos ahora la rama *about*.
+
+    lucas@falcon:~/notas/demo-git$ git checkout master
+    Switched to branch 'master'
+    lucas@falcon:~/notas/demo-git$ git merge about 
+    Updating 2a799a3..57c5c7b
+    Fast-forward
+     about.html |    9 +++++++++
+     index.html |    1 +
+     2 files changed, 10 insertions(+)
+     create mode 100644 about.html
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 57c5c7b (HEAD, master, about) Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+El procedimiento es similar: debemos salir de la rama, mezclarla desde la rama destino, y finalmente observar que nos quedan ambas en el mismo punto.
+
+Aquí debemos tomar una decisión: ¿tiene sentido conservar la rama? Si el trabajo no ha finalizado (puede necesitarse integrar parcialmente antes de terminar) deberemos conservarla y seguir trabajando en esta rama. Si hemos finalizado, en cambio, no tiene sentido conservar una rama que ha cumplido su objetivo. Para ello:
+
+    lucas@falcon:~/notas/demo-git$ git branch -D about
+    Deleted branch about (was 57c5c7b).
+    lucas@falcon:~/notas/demo-git$ git lol
+    * 57c5c7b (HEAD, master) Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Conocíamos el comando, sólamente que ahora hemos resguardado el trabajo mediante el branch master.
+
+> **Nota:** Hemos trabajado con ramas, creándolas, haciéndolas crecer, integrándolas y eliminándolas. Si bien no es necesario utilizarlas, presenta incontables ventajas, como trabajar en dos funcionalidades divergentes, elegir cuál prospera y cuál no, mantener ordenado el código y otras ventajas que iremos descubriendo con el tiempo. El estándar laboral es utilizarlas, por lo que es preferible tomar gimnasia con esta técnica de trabajo.
 
 ### Mezclando
 
@@ -223,10 +351,16 @@ Si en su lugar hubiésemos empleado la opción `--soft`, descartaría el último
 * `git commit -m un_comentario`, para realizar efectivamente un commit con todo lo guardado en el área de stash. Dejará el stash limpio.
 * `git log`, para tener un listado de los commits, ordenados en forma inversa según la fecha de captura.
 * `gitk`, para acceder a un inspector gráfico de la evolución del proyecto.
-* `git lol`, un alias para el comando `git lol` con muchas opciones y argumentos. Es necesario [configurarlo](http://uberblo.gs/2010/12/git-lol-the-other-git-log).
+* `git lol`, un alias para el comando `git log` con muchas opciones y argumentos. Es necesario [configurarlo](http://uberblo.gs/2010/12/git-lol-the-other-git-log).
 * `git reset --hard id_commit`, para volver atrás descartando los cambios realizados luego del commit especificado, eliminándolos definitivamente.
 * `git reset --soft id_commit`, para volver atrás descartando los cambios realizados luego del commit especificado, dejándolos en el directorio de trabajo.
+* `git checkout -b nombre_rama`, para crear una nueva rama desde el punto actual.
+* `git checkout nombre_rama`, para pasar de la rama actual hacia otra.
+* `git branch`, para ver las ramas actuales.
+* `git branch -D nombre_rama`, para eliminar una rama. Es necesario estar posicionado en *otra rama*.
+* `git merge nombre_rama`, para mezclar el contenido de la rama especificada dentro de la rama actual.
 
 ## Bibliografía
 * **Chacon, Scott.** *Pro git.* Berkeley, CA: Apress, 2009
 * **Chacon, Scott.** [Pro git](http://github.com/progit/progit/tree/master/es). Libro gratuito y en español.
+* **Fowler, Martin** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
