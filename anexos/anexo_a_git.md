@@ -12,7 +12,7 @@ Cada copia de un repositorio git es tan válida como las otras, y puede comporta
 Esto presenta como ventaja, por ejemplo, la posibilidad de trabajar individualmente desconectado de todo tipo de redes, o en grupo, sin necesidad de tener un servidor centralizado.
 *Cualquier nodo aislado es independiente*.
 
-> Otros sistemas de control de versiones necesitan de la presencia de una red y de un servidor centralizado para poder trabajar, ver diferencias en archivos, acceder a la historia del proyecto y generar ramas de desarrollo.
+> **Nota:** Otros sistemas de control de versiones necesitan de la presencia de una red y de un servidor centralizado para poder trabajar, ver diferencias en archivos, acceder a la historia del proyecto y generar ramas de desarrollo.
 
 ### Código abierto
 Si fuera de nuestro interés, podríamos acceder al [repositorio git](http://www.github.com/git/git) donde se encuentra el código de git (sí, git está administrado con git).
@@ -440,7 +440,31 @@ Una vez terminada la mezcla, el commit, y el borrado del branch que ya no es de 
 Con esto hemos concluido nuestro trabajo de mezcla, por lo que podemos continuar con el desarrollo.
 
 ### Etiquetando
+A veces necesitamos identificar un commit en particular mucho tiempo después de haberlo confeccionado. Sería impráctico tener que recordar su código, aquel SHA que lo identifica unívocamente.  
+Es por ello que surge el concepto de etiqueta, o tag (utilizando el léxico de git).
 
+Supongamos que el punto actual de desarrollo deseamos identificarlo porque será la primera puesta en producción (o algún suceso de similar importancia). Podríamos decir que es la versión 1.0, y asignarle una etiqueta conforme a ello:
+
+    lucas@falcon:~/notas/demo-git$ git tag "version-1.0"
+    lucas@falcon:~/notas/demo-git$ git lol
+    *   0d1b4a2 (HEAD, tag: version-1.0, master) Se resuelven conflictos
+    |\  
+    | * 334de17 (titulo) Cambiamos el título
+    * | 034d45e Otro título
+    |/   
+    * 57c5c7b Agregamos el about me
+    * 2a799a3 Un cambio deseable
+    * 40dcdd8 Se agrega página de inicio
+    * 4a8a534 Commit inicial
+
+Como podemos ver, el último commit ha sido etiquetado con el nombre indicado. Ahora podremos referirnos a ese emblemático commit mediante el nombre de la etiqueta (para hacer nuevos branches, checkouts, rollbacks y otras operaciones que requieran especificar un commit en particular).
+
+Podemos ver los tags de nuestro proyecto con el simple comando:
+
+    lucas@falcon:~/notas/demo-git$ git tag
+    version-1.0
+
+> **Nota:** Puede hacerse otro tipo de tags, el cual es equivalente a un commit (por los datos de autoría que lleva aparejados), pero son conceptos que escapan a los intereses de estas notas. Puede profundizarse sobre ellos en la bibliografía, fundamentalmente en el libro **Pro git**, de *Scott Chacon*.
 
 ### Trabajando en equipo
 
@@ -462,6 +486,8 @@ Con esto hemos concluido nuestro trabajo de mezcla, por lo que podemos continuar
 * `git branch -D nombre_rama`, para eliminar una rama. Es necesario estar posicionado en *otra rama*.
 * `git merge nombre_rama`, para mezclar el contenido de la rama especificada dentro de la rama actual.
 * `git mergetool`, para mezclar en forma asistida el contenido de archivos conflictuados al hacer un `git merge`. Son aquellos archivos sobre los que no se ha podido hacer una mezcla automática.
+* `git tag nombre_tag sha_del_commit`, para etiquetar cierto commit con un identificador de elección propia. Sirve para marcar versiones, entregas o hitos remarcables en el proyecto.
+* `git tag -l`, para listar todos los tags del proyecto.
 
 ## Bibliografía
 * **Chacon, Scott.** *Pro git.* Berkeley, CA: Apress, 2009
