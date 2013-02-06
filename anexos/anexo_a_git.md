@@ -179,7 +179,7 @@ Podemos observar que cada commit tiene una estructura similar: un código alfanu
 > **Nota:** Ese código alfanumérico extenso tiene un nivel de colisión insignificante. Tal es así que si tomamos sus primeros 7 caracteres podemos prácticamente asegurar a qué commit nos referimos dentro del proyecto.  
 > Con ese código indicaremos, en un futuro, un commit en particular.
 
-Una forma alternativa es utilizar el comando `gitk`, que es un inspector gráfico de los commits. Se recomienda su uso cuando se desea ir viendo la evolución del proyecto, y no sólamente la información de los commits.
+Una forma alternativa es utilizar el comando `gitk`, que es un inspector gráfico de los commits. Se recomienda su uso cuando se desea ir viendo la evolución del proyecto, y no solamente la información de los commits.
 
 ### Volviendo atrás
 Muchas veces trabajamos en algo que no rinde sus frutos o que por diversas razones deseamos volver atrás. El comando `git reset` nos ayudará en esta tarea.
@@ -467,7 +467,7 @@ Podemos ver los tags de nuestro proyecto con el simple comando:
 > **Nota:** Puede hacerse otro tipo de tags, el cual es equivalente a un commit (por los datos de autoría que lleva aparejados), pero son conceptos que escapan a los intereses de estas notas. Puede profundizarse sobre ellos en la bibliografía, fundamentalmente en el libro **Pro git**, de *Scott Chacon*.
 
 ### Trabajando en equipo
-Una de las mayores ventajas que nos presenta el trabajo con un sistema de control de versiones es la posibilidad de cooperar en equipo, y obtener esa sinergia que no se consigue individualmente. Consideremos que la alternativa podría ser enviarse los fragmentos trabajados por correo electrónico, y mezclarlos a mano (completamente arcáico).
+Una de las mayores ventajas que nos presenta el trabajo con un sistema de control de versiones es la posibilidad de cooperar en equipo, y obtener esa sinergia que no se consigue individualmente. Consideremos que la alternativa podría ser enviarse los fragmentos trabajados por correo electrónico, y mezclarlos a mano (completamente arcaico).
 
 A modo de ejemplo utilizaremos [Github](http://www.github.com) como servidor de git, el cual será nuestro repositorio centralizado para permitirnos cooperar.
 
