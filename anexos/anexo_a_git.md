@@ -81,7 +81,7 @@ El mensaje es muy elocuente: "nothing to commit". Dado que no hemos hecho modifi
 No nos queda más que hacer alguna modificación al repo, para poder comenzar a experimentar con git.
 
 ### Sacando fotos
-Una vez que comenzamos a trabajar sobre el proyecto, y tenemos un conjunto de cambios que deseamos resguardar, podemos hacer un commit (análogo a "sacar una foto", pero empecemos a tomar el vocabulario). En todo proyecto es buena idea tener un archivo `README.md` que especifique indicaciones generales del mismo, y toda información relevante para futuros usuarios/desarrolladores del mismo. Nosotros ya hemos escrito ese README, por lo que el estado del proyecto será diferente.
+Una vez que comenzamos a trabajar sobre el proyecto, y tenemos un conjunto de cambios que deseamos resguardar, podemos hacer un commit (análogo a "sacar una foto", pero empecemos a tomar el vocabulario). En todo proyecto es buena idea tener un archivo `README.md` que especifique indicaciones generales del mismo, y toda información relevante para futuros usuarios/desarrolladores del mismo. Digamos que creamos este archivo.
 
     lucas@falcon:~/notas/demo-git$ git status
     # On branch master
@@ -203,12 +203,12 @@ En este momento HEAD, nuestro *puntero de trabajo actual*, nos dice que nos repo
 Si en su lugar hubiésemos empleado la opción `--soft`, descartaría el último commit pero los cambios se encontrarían presentes en el directorio de trabajo por si deseamos modificarlos o emplear una de ellos en el próximo commit.
 
 ### Ramas... ramas... ¡ramas!
-Una forma más correcta de trabajar en un proyecto de mediana envergadura es mediante ramas de desarrollo. Esto quiere decir que existe un flujo estandarizado para desarrollo, digámosle master por el momento, y cada vez que deseamos agregar una funcionalidad generar una divergencia de ese flujo. Una vez terminado el trabajo, volver a integrarlo al flujo principal.  
+Una forma más correcta de trabajar en un proyecto de mediana envergadura es mediante ramas de desarrollo. Esto quiere decir que existe un flujo estandarizado para desarrollo, digámosle master por el momento, y cada vez que deseemos agregar una funcionalidad generaremos una divergencia de ese flujo. Una vez terminado el trabajo, volver a integrarlo al flujo principal.  
 Esto presenta muchas ventajas, entre los principales podríamos encontrar:
 
 * La posibilidad de enfocarnos en la rama actual (es decir, en la funcionalidad que estamos desarrollando) sin miedo a ensuciar el flujo principal de desarrollo.
 * En caso de necesitar hacer un arreglo sobre el flujo principal, poder cambiar la rama de desarrollo a otra.
-* La creación de ramas experimentales, en las cuales se hacen pruebas de concepto totalmente descartables, sabiendo que se puede eliminar la rama una vez se descubra que no es frusctífera.
+* La creación de ramas experimentales, en las cuales se hacen pruebas de concepto totalmente descartables, sabiendo que se puede eliminar la rama una vez se descubra que no es fructífera.
 
 > **Nota:** Existen [teorías completas](http://martinfowler.com/bliki/FeatureBranch.html) sobre cómo desarrollar con ramas, equipos de trabajo y flujos distribuídos. Por supuesto, exceden los objetivos de este apartado. Sin embargo no debemos descartar que en cada organización se escoja un modo similar pero ligeramente diferente.
 
@@ -256,7 +256,7 @@ Nos resta agregar los cambios, commitear, y contemplar cómo queda nuestra peque
     * 40dcdd8 Se agrega página de inicio
     * 4a8a534 Commit inicial
 
-Como podemos ver, el branch **about** se encuentra por encima de master. Esto es lógico desde el punto de vista de que esta rama ha crecido desde la otra. Si en este punto volviéramos a master, y trabajásemos sobre ella, veríamos la primera divergencia. En lugar de hacer esto, crearemos otra tama (desde master) para un cambio que no deseamos que prospere, así ejemplificamos todos los casos.
+Como podemos ver, el branch **about** se encuentra por encima de master. Esto es lógico desde el punto de vista de que esta rama ha crecido desde la otra. Si en este punto volviéramos a master, y trabajásemos sobre ella, veríamos la primera divergencia. En lugar de hacer esto, crearemos otra rama (desde master) para un cambio que no deseamos que prospere, así ejemplificamos todos los casos.
 
 Por empezar, volvamos a la rama **master**:
 
@@ -318,7 +318,7 @@ Integremos ahora la rama *about*.
     * 40dcdd8 Se agrega página de inicio
     * 4a8a534 Commit inicial
 
-El procedimiento es similar: debemos salir de la rama, mezclarla desde la rama destino, y finalmente observar que nos quedan ambas en el mismo punto.
+El procedimiento es el siguiente: debemos salir de la rama, mezclarla desde la rama destino, y finalmente observar que nos quedan ambas en el mismo punto.
 
 Aquí debemos tomar una decisión: ¿tiene sentido conservar la rama? Si el trabajo no ha finalizado (puede necesitarse integrar parcialmente antes de terminar) deberemos conservarla y seguir trabajando en esta rama. Si hemos finalizado, en cambio, no tiene sentido conservar una rama que ha cumplido su objetivo. Para ello:
 
@@ -422,7 +422,7 @@ Una vez resuelto el conflicto con la herramienta propuesta, veremos el estado de
 
 Podemos ver que agregó ciertos archivos, que podemos eliminar con confianza. Adicionalmente, el que fue mezclado aparece como para ser commiteado. Simplemente lo agregamos y commiteamos, con algún comentario como "Se resuelven conflictos" o algún otro significativo.
 
-> **Nota:** Hay otra estrategia para la mezcla, que es el **rebase**. Por ser ligeramente más complicada e involucrar una estrategia que requiere más cuidado, preferimos dejarla a un lado de este apartado.
+> **Nota:** Hay otra estrategia para la mezcla, que es el **rebase**. Por ser ligeramente más complicada e involucrar mayor cuidado, es un concepto que escapa a los intereses de estas notas.
 
 Una vez terminada la mezcla, el commit, y el borrado del branch que ya no es de utilidad, nos encontramos con el siguiente escenario:
 
@@ -496,7 +496,7 @@ Esto creará un nuevo branch en forma remota, llamado *master* y que nos servir�
 #### Actualizando el repo
 Una vez que estamos trabajando en equipo, y ya sabiendo compartir un proyecto, necesitamos poder bajar los cambios que nuestros compañeros hagan al mismo.
 
-Para ello, y teniendo en cuenta **tener el stash vacío** (por prudencia, aunque con la práctica no es necesario) y **un estado estable del directorio de trabajo** (esto es, commiteando aquello que desamos conservar y descartando aquello que no), haremos lo siguiente:
+Para ello, y teniendo **el directorio de trabajo estable** (esto es, commiteando aquello que desamos conservar y descartando aquello que no), haremos lo siguiente:
 
     lucas@falcon:~/notas/demo-git$ git pull origin master
     From github.com:delucas/demo-git
