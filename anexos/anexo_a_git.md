@@ -537,4 +537,7 @@ Esta vez interpretaremos la línea como *"git, tirá del repo marcado como origi
 * **Chacon, Scott.** [Pro git](http://github.com/progit/progit/tree/master/es). Libro gratuito y en español.
 
 * **Neo.** [Git immersion](http://gitimmersion.com/). Guía para aprender git paso a paso.
+* **Github** [Try git](http://try.github.com/). Un tutorial interactivo sobre la tecnología. Una excelente forma de empezar.
+* **Quaranto, Nick** [Git ready](http://gitready.com/). Repositorio de tips y pequeñas guías sobre git.
+
 * **Fowler, Martin.** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
