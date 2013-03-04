@@ -2,9 +2,9 @@
 
 > Una clase debe tener una única razón para cambiar.
 
-Una remembranza de la [Ley de Curly](http://www.youtube.com/watch?v=2k1uOqRb0HU), simple de enunciar y muchas veces dificil de identificar. Este principio enfatiza la importancia de que cada clase tenga un comportamiento cohesivo, y que se apegue al mismo encapsulándolo. Todo comportamiento adicional que no sea cohesivo, debería formar parte de otra clase, y ocasionalmente facilitar la colaboración entre ellas.
+Una remembranza de la [Ley de Curly](http://www.youtube.com/watch?v=2k1uOqRb0HU), simple de enunciar y muchas veces difícil de identificar. Este principio enfatiza la importancia de que cada clase tenga un comportamiento cohesivo, y que se apegue al mismo encapsulándolo. Todo comportamiento adicional que no sea cohesivo, debería formar parte de otra clase, y ocasionalmente facilitar la colaboración entre ellas.
 
->**Cohesión. ** El grado de relación que tienen dos elementos de un módulo entre sí. Una alta cohesión implica una relación cercana, lo que sugiere que esos elementos podrían pertenecer al mismo módulo.
+> **Cohesión.** El grado de relación que tienen dos elementos de un módulo entre sí. Una alta cohesión implica una relación cercana, lo que sugiere que esos elementos podrían pertenecer al mismo módulo.
 
 ## Cuestión de cambios
 Los usuarios reales de nuestros sistemas serán aquellos a los que deberemos proporcionar la solución a sus problemas reales. En tanto la actividad de desarrollo de software tiene que ver con necesidades cambiantes, personas desempeñando sus tareas de nuevas formas y alteraciones en la manera de relacionarse con nuestra solución, estamos sujetos a la posibilidad de que la pieza de software creada en un momento no esté alineada con la necesidad actual.
@@ -16,12 +16,12 @@ Puede tenerse un sistema excelente que sirva a las necesidades de hoy, pero debi
 Cuando nos referimos a *responsabilidades* estamos enumerando indirectamente posibles ejes de cambio. Si nuestras clases encapsulan una única responsabilidad, sólo tienen una razón para cambiar, y este cambio es local (i.e. no afecta a otras clases). Contrariamente, cuantas más responsabilidades engloba nuestra clase, más razones habrá para que cambie.
 
 ## Fan-out
-En la programación orientada a objetos, tanto el fan-in como el fan-out se refieren a las interacciones entre objetos. *El fan-out de un módulo es la cantidad de mensajes que envía hacia el exterior*.
+En la programación orientada a objetos, tanto el fan-in como el fan-out se refieren a las interacciones entre objetos. *El fan-out de un módulo es la cantidad de mensajes que envía hacia el exterior*. Análogamente, la cantidad de mensajes recibida será el fan-in.
 
 Esta métrica nos sirve para tener una idea del nivel de acoplamiento de un módulo. Recordemos que cuando nos referimos a módulo estamos hablando de una unidad funcional, ya sea un simple método o una clase (según qué querramos analizar).
 
 ## El problema de acoplamiento
-Cuanto más mensajes envíe un módulo al exterior, más datos conoce de su entorno. El conocimiento del entorno la hace sensible a cambios en el mismo. Es por ello que si una clase tiene un alto fan-out (o en otras palabras, emite muchos mensajes hacia el exterior del módulo cohesivo en el que se encuentra) hay muchas razones que ocasionalmente podrían incurrir en cambios.
+Cuanto más mensajes envíe un módulo al exterior, más datos conoce de su entorno. El conocimiento del entorno hace sensible a la clase a cambios en el mismo. Es por ello que si una clase tiene un alto fan-out (o en otras palabras, emite muchos mensajes hacia el exterior del módulo cohesivo en el que se encuentra) hay muchas razones que ocasionalmente podrían incurrir en cambios.
 
 El cambio en sí no es malo: debe introducirse un cambio para poder albergar una nueva funcionalidad, o modificar una existente de modo que esté alineada con las necesidades de nuestros usuarios. El verdadero problema del alto acoplamiento es que puede llevar a modificaciones incidentales en clases relacionadas pero que no tienen que ver directamente con el cambio original.
 
@@ -62,9 +62,11 @@ La realidad es que nuestra clase `Calculadora` tiene dos razones para cambiar, y
 Se podría seguir refinando, pero dejemos el caso en esta instancia.
 
 ## Análisis
+
 ### Ventajas
 * Aumenta la mantenibilidad del código. Sólo debo ejecutar cambios locales conforme se necesite.
 * Aumenta la extensibilidad del código. Se puede cambiar y se permite que el eje de cambio se mantenga a lo largo del tiempo.
+
 ### Desventajas
 * Puede generar una gran cantidad de clases si no se lo considera adecuadamente o si se toma en forma absolutamente estricta (acabando con una clase por método).
 * Puede ser complicado, si no se lleva una buena nomenclatura, encontrar aquel punto a cambiar dada la necesidad de alterar el software para cumplir con el nuevo requisito.
@@ -81,4 +83,4 @@ Debemos estar atentos a identificar las responsabilidades de nuestras clases, y 
 * [**SRP**](https://docs.google.com/file/d/0ByOwmqah_nuGNHEtcU5OekdDMkk/edit). Robert Martin. Accedido el 2 de marzo de 2013
 * [**The Single Responsibility Principle**](http://do-while-true.blogspot.com.ar/2012/03/single-responsibility-principle-srp.html). Chris Lambrou. Accedido el 2 de marzo de 2013
 * [**Curly's Law: Do One Thing**](http://www.codinghorror.com/blog/2007/03/curlys-law-do-one-thing.html). Jeff Attwood. Accedido el 2 de marzo de 2013
-* [**Cohesion (computer science)**](http://en.wikipedia.org/wiki/Cohesion_(computer_science)). Wikipedia. Accedido el 2 de marzo de 2013
+* [**Cohesion (computer science)**](http://en.wikipedia.org/wiki/Cohesion_%28computer_science%29). Wikipedia. Accedido el 2 de marzo de 2013
