@@ -539,5 +539,7 @@ Esta vez interpretaremos la línea como *"git, tirá del repo marcado como origi
 * **Neo.** [Git immersion](http://gitimmersion.com/). Guía para aprender git paso a paso.
 * **Github** [Try git](http://try.github.com/). Un tutorial interactivo sobre la tecnología. Una excelente forma de empezar.
 * **Quaranto, Nick** [Git ready](http://gitready.com/). Repositorio de tips y pequeñas guías sobre git.
+* **Mislav Marohnic** [A few git tips you didn't know about](http://mislav.uniqpath.com/2010/07/git-tips/). Tips sobre git.
+* **Peter Cottle** [Learn Git Branching](http://pcottle.github.com/learnGitBranching/). Una guía interactiva sobre cómo realizar branch.
 
 * **Fowler, Martin.** [Feature branch](http://martinfowler.com/bliki/FeatureBranch.html). Cómo desarrollar con ramas.
