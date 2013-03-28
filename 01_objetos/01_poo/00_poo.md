@@ -29,8 +29,8 @@ En otras palabras, estamos ante la posibilidad de crear y dar forma a cualquier 
 ## Bibliografía recomendada
 
 * Bertrand Meyer. 1997. Object-Oriented Software Construction (2nd Ed.). Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
-* Bertrand Meyer. 2009. Touch of Class: Learning to Program Well with Objects and Contracts (1 ed.). Springer Publishing Company, Incorporated.
+* Bertrand Meyer. 2009. Touch of Class: Learning to Program Well with Objects and Contracts (1st Ed.). Springer Publishing Company, Incorporated.
 
 ## Links de interés
 
-* Wikipedia contributors, "Object-oriented programming", *Wikipedia, The Free Encyclopedia*, <http://en.wikipedia.org/wiki/Object-oriented_programming> (accedido el 27 de junio de 2012)
+* "[Object-oriented programming](http://en.wikipedia.org/wiki/Object-oriented_programming)", *Wikipedia, The Free Encyclopedia*. Wikimedia Foundation, 3 de Agosto de 2013 (accedido el 27 de junio de 2012)

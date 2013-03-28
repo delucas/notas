@@ -50,7 +50,7 @@ Mediante buenas prácticas, y una política de mejoras sobre el código para lle
 
 ## Bibliografía
 * [What is Software Design?](http://user.it.uu.se/~carle/softcraft/notes/Reeve_SourceCodeIsTheDesign.pdf). *Jack W. Reeves*. 1992. C++ journal.
-* [**Principles of OOD**](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). Robert Martin. Accedido el 10 de marzo de 2013.
+* [Principles of OOD](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). Robert Martin. Accedido el 10 de marzo de 2013.
 * [Code Smell](http://c2.com/cgi/wiki?CodeSmell).
 * [Code Deodorant](http://c2.com/cgi/wiki?CodeDeodorant).
 * [Bad Smells in Software - a Taxonomy and an Empirical Study](http://www.soberit.hut.fi/mmantyla/mmantyla_thesis_final_print2.pdf). *Myka Mäntylä*, 2003. Helsinki University of Technology.
