@@ -7,10 +7,11 @@ Como puede leerse en una de las fuentes:
 > Shaun Smith
 
 El encapsulamiento tiene dos sentidos: el de especialización, y el de completitud:
+
 * *Especialización*, ya que el propio objeto es aquél que sabrá cómo manejar los datos que contiene. Es por eso que el mejor lugar para hacerlo, es dentro del mismo objeto (con los métodos asociados a los datos dados).
 * *Completitud*, ya que nos permite descansar en que la abstracción construída representa a la entidad, y a aquella responsabilidad que tendrá asignada dentro de nuestro sistema.
 
-Por supuesto, no debemos perder de vista que el objetivo de trabajar con objetos es el de aprovechar el pasaje de mensajes y la colaboración entre los mismos: *no nos dejemos tentar por la idea de que programar orientado a objetos es simplemente utilizar estructuras de datos y funciones asociadas*. Es por ello que nos interesa mucho más la interfaz pública de los objetos que sus representaciones internas y datos asociados.
+Por supuesto no debemos perder de vista que el objetivo de trabajar con objetos es el de aprovechar el pasaje de mensajes y la colaboración entre los mismos: *no nos dejemos tentar por la idea de que programar orientado a objetos es simplemente utilizar estructuras de datos y funciones asociadas*. Es por ello que nos interesa mucho más la interfaz pública de los objetos que sus representaciones internas y datos asociados.
 
 Se define como **interfaz pública** de una clase al conjunto de responsabilidades que los objetos de esa clase estarán brindando, desde el punto de vista externo a la misma. Estas responsabilidades deben ser *cohesivas*, pero eso lo veremos más adelante.
 
@@ -30,8 +31,8 @@ Muchas veces este ocultamiento de información no podrá ser físico ya que frec
 El encapsulamiento nos permite armar nuestros objetos, juntando aquellas responsabilidades que necesitan dentro del sistema con los datos para poder hacerlo.  
 Ocultar la información es utilizar las técnicas que nos brinda el lenguaje para abstraer a nuestros módulos cliente de los detalles de implementación.
 
-El encapsulamiento nos habla de límites: esta responsabilidad es mía, la llevaré a cabo con estos datos.  
-El ocultamiento de información nos indica buenas prácticas de programación: necesito de este otro objeto, pero no me importa cómo resuelva sus responsabilidades mientras lo haga por mí.
+El encapsulamiento nos habla de límites: "esta responsabilidad es mía, la llevaré a cabo con estos datos".  
+El ocultamiento de información nos indica buenas prácticas de programación: "necesito de este otro objeto, pero no me importa cómo resuelva sus responsabilidades mientras lo haga por mí".
 
 Un concepto no implica el otro, ni viceversa. Un ejemplo muy simplificado de cada caso podemos verlo en [una de las fuentes](http://c2.com/cgi/wiki?EncapsulationIsNotInformationHiding), que nos tomamos la licencia de transcribir:
 
@@ -63,7 +64,8 @@ En este caso, la implementación se encuentra protegida mediante la abstracción
       }
     }
 
-Por último, tenemos ambas cualidades, garantizadas por el método que representa la responsabilidad de los objetos, retornando List (suficientemente genérico) y la posesión  del atributo privado.  
+Por último, tenemos ambas cualidades, garantizadas por el método que representa la responsabilidad de los objetos, retornando List (suficientemente genérico) y la posesión  del atributo privado.
+
 **Nota:** ¡Cuidado! El manejo de referencias tiene como consecuencia que al retornar la lista original, aquél que la utilice pueda cambiar su contenido. Hay alternativas a esto, como ser el retornar una copia inmutable, no exponer la lista u otorgar un iterador propio en lugar de permitir el acceso al atributo (pero a los efectos de ejemplificar, bien vale el código proporcionado)
 
 #### Reglas
