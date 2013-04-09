@@ -228,6 +228,7 @@ En pocas palabras, el LSP refuerza lo que el OCP quiere obtener a largo plazo: r
 * Martin, Robert C. The Liskov Substitution Principle. 1996. [PDF](http://www.objectmentor.com/resources/articles/lsp.pdf).
 
 ## Links de interés
+* "[Interview with Barbara Liskov](http://www.infoq.com/interviews/barbara-liskov)". Blewitt, A. Liskov, B. *infoq.com*, 2 de abril de 2013 (accedido el 9 de abril de 2013)
 * "[Principles of OOD](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)". Martin, Robert. *butunclebob.com*, 11 de mayo de 2005 (accedido el 12 de marzo de 2013)
 * "[Type system](http://en.wikipedia.org/wiki/Type_system)", *Wikipedia, The Free Encyclopedia*. Wikimedia Foundation, 26 de marzo de 2013 (accedido el 27 de marzo de 2013)
 * "[Type theory](http://en.wikipedia.org/wiki/Type_theory)", *Wikipedia, The Free Encyclopedia*. Wikimedia Foundation, 19 de marzo de 2013 (accedido el 27 de marzo de 2013)
